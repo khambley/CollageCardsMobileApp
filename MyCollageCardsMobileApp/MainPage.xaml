@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:MyCollageCardsMobileApp"
+             mc:Ignorable="d"
+             x:Class="MyCollageCardsMobileApp.MainPage"
+             Title="Welcome to MyCollageCards!">
+
+    <d:ContentPage.BindingContext>
+        <local:MainPage />
+    </d:ContentPage.BindingContext>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="ToolbarItem_Clicked" />
+    </ContentPage.ToolbarItems>
+
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Button Text="Toggle Filter" />
+
+            <CollectionView Grid.Row="1"
+                            x:Name="cardCollectionView"
+                            HorizontalOptions="StartAndExpand"
+                            VerticalOptions="FillAndExpand"
+                            SelectionChanged="cardCollectionView_SelectionChanged"
+                            SelectionMode="Single">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                            <StackLayout Orientation="Horizontal"
+                                         Padding="5"
+                                         VerticalOptions="FillAndExpand"
+                                         MinimumHeightRequest="100">
+
+                                <Image Source="{Binding ImagePath}" WidthRequest="100" HeightRequest="100" Aspect="AspectFit" />
+
+                                <StackLayout Orientation="Vertical"
+                                             Padding="2"
+                                             VerticalOptions="Center">
+
+                                    <Label Text="{Binding Title}" 
+                                           FontSize="18"
+                                           Margin="2"
+                                           TextColor="Black"
+                                           FontAttributes="Bold" />
+
+                                    <Label Text="{Binding Suit}"
+                                           FontSize="15"
+                                           Margin="2"
+                                           TextColor="LightSeaGreen"
+                                           FontAttributes="Italic" />
+
+                                </StackLayout>
+                            </StackLayout>
+                        
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                <StackLayout>
+                    <Label VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+                           Text="No cards yet"/>
+                </StackLayout>
+            </CollectionView.EmptyView>
+
+            </CollectionView>
+            
+        </Grid>
+    </ContentPage.Content>
+
+</ContentPage>

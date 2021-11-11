@@ -6,73 +6,51 @@
              xmlns:local="clr-namespace:MyCollageCardsMobileApp"
              mc:Ignorable="d"
              x:Class="MyCollageCardsMobileApp.MainPage"
-             Title="Welcome to MyCollageCards!">
+             Title="Start Page">
 
     <d:ContentPage.BindingContext>
         <local:MainPage />
     </d:ContentPage.BindingContext>
 
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Clicked="ToolbarItem_Clicked" />
-    </ContentPage.ToolbarItems>
-
 
     <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+        <StackLayout
+        Padding="5"
+        Margin="20,35,20,25"
+        Spacing="20"
+        HorizontalOptions="CenterAndExpand"
+        VerticalOptions="StartAndExpand">
 
-            <Button Text="Toggle Filter" />
+            <Label
+                HorizontalTextAlignment="Center"
+                FontSize="Large"
+                Text="Welcome to the Collage Cards App!" />
+            <Label
+                HorizontalTextAlignment="Center"
+                FontSize="Medium"
+                Text="This app is designed for you to view and manage your collection of SoulCollage cards." />
+            <StackLayout
+                    Padding="5"
+                    Spacing="10"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="StartAndExpand">
 
-            <CollectionView Grid.Row="1"
-                            x:Name="cardCollectionView"
-                            HorizontalOptions="StartAndExpand"
-                            VerticalOptions="FillAndExpand"
-                            SelectionChanged="cardCollectionView_SelectionChanged"
-                            SelectionMode="Single">
+                <Button
+                    Padding="40,10"
+                    HorizontalOptions="FillAndExpand"
+                    TextColor="White"
+                    FontSize="Large"
+                    FontAttributes="Bold"
+                    BackgroundColor="Red"
+                    Text="View Cards"
+                    Clicked="ViewCardsButton_Clicked" />
 
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                            <StackLayout Orientation="Horizontal"
-                                         Padding="5"
-                                         VerticalOptions="FillAndExpand"
-                                         MinimumHeightRequest="100">
+            </StackLayout>
+          
+        </StackLayout>
 
-                                <Image Source="{Binding ImagePath}" WidthRequest="100" HeightRequest="100" Aspect="AspectFit" />
-
-                                <StackLayout Orientation="Vertical"
-                                             Padding="2"
-                                             VerticalOptions="Center">
-
-                                    <Label Text="{Binding Title}" 
-                                           FontSize="18"
-                                           Margin="2"
-                                           TextColor="Black"
-                                           FontAttributes="Bold" />
-
-                                    <Label Text="{Binding Suit}"
-                                           FontSize="15"
-                                           Margin="2"
-                                           TextColor="LightSeaGreen"
-                                           FontAttributes="Italic" />
-
-                                </StackLayout>
-                            </StackLayout>
-                        
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-                <CollectionView.EmptyView>
-                <StackLayout>
-                    <Label VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
-                           Text="No cards yet"/>
-                </StackLayout>
-            </CollectionView.EmptyView>
-
-            </CollectionView>
+       
             
-        </Grid>
     </ContentPage.Content>
 
 </ContentPage>

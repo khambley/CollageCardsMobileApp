@@ -19,55 +19,15 @@ namespace MyCollageCardsMobileApp
 
         protected async override void OnAppearing()
         {
-            cardCollectionView.SelectedItem = null;
-
-            using (var dataContext = new DataContext())
-            {
-                await InsertStartData(dataContext);
-
-                var theCardList = dataContext.Cards.ToList();
-
-                cardCollectionView.ItemsSource = theCardList;
-            }
+            
         }
-
-        async Task InsertStartData(DataContext context)
+        async void ViewCardsButton_Clicked(System.Object sender, System.EventArgs e)
         {
-            var cardCount = context.Cards.Count();
-
-            if(cardCount == 0)
-            {
-                await context.AddAsync(new Card
-                {
-                    Title = "My Collage Card 1",
-                    Suit = "Test Suit 1",
-                    Description = "This is a test card description",
-                    ImagePath = "https://via.placeholder.com/500x800?text=Card+Image",
-                    DateCreated = DateTime.Now
-                });
-                await context.AddAsync(new Card
-                {
-                    Title = "My Collage Card 2",
-                    Suit = "Test Suit 2",
-                    Description = "This is a test card description",
-                    ImagePath = "https://via.placeholder.com/800x500?text=Card+Image",
-                    DateCreated = DateTime.Now
-                });
-                await context.SaveChangesAsync();
-            }
-        }
-        async void ToolbarItem_Clicked(System.Object sender, System.EventArgs e)
-        {
-            await Navigation.PushModalAsync(new NavigationPage(new AddCardPage()));
+            var cardListPage = new CardListPage();
+            await Navigation.PushAsync(cardListPage);
         }
 
-        async void cardCollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (!(e.CurrentSelection.FirstOrDefault() is Card card ))
-                return;
 
-            var notesPage = new NotesPage(card.Id);
-            await Navigation.PushAsync(notesPage);
-        }
+
     }
 }

@@ -12,65 +12,65 @@
     <d:ContentPage.BindingContext>
         <local:CardListPage />
     </d:ContentPage.BindingContext>
-
+    
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Clicked="ToolbarItem_Clicked" />
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <Grid>
+        <Grid RowSpacing="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
+                <RowDefinition Height="30" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
             <Button Text="Toggle Filter" />
 
-            <CollectionView Grid.Row="1"
-                            x:Name="cardCollectionView"
-                            HorizontalOptions="StartAndExpand"
-                            VerticalOptions="FillAndExpand"
-                            SelectionChanged="cardCollectionView_SelectionChanged"
-                            SelectionMode="Single">
+            <ListView Grid.Row="1"
+                      RowHeight="150"
+                      x:Name="cardCollectionView"
+                      ItemSelected="cardCollectionView_SelectionChanged"
+                      SelectionMode="Single">
 
-                <CollectionView.ItemTemplate>
+                <ListView.ItemTemplate>
                     <DataTemplate>
-                            <StackLayout Orientation="Horizontal"
-                                         Padding="5"
-                                         VerticalOptions="FillAndExpand"
-                                         MinimumHeightRequest="100">
+                        <ViewCell>
+                            <Grid Padding="0,0,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
 
-                                <Image Source="{Binding ImagePath}" WidthRequest="100" HeightRequest="100" Aspect="AspectFit" />
+                            <Image Grid.RowSpan="2"
+                                   Source="{Binding ImagePath}"
+                                   HeightRequest="150"
+                                   Aspect="AspectFill"
+                                   HorizontalOptions="FillAndExpand"
+                                   />
 
-                                <StackLayout Orientation="Vertical"
-                                             Padding="2"
-                                             VerticalOptions="Center">
+                            <Label Grid.Column="1"
+                                   Text="{Binding Title}" 
+                                   FontSize="16"
+                                   Margin="0, 0, 0, 0"
+                                   TextColor="Black"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="Center"/>
 
-                                    <Label Text="{Binding Title}" 
-                                           FontSize="18"
-                                           Margin="2"
-                                           TextColor="Black"
-                                           FontAttributes="Bold" />
+                            <Label Grid.Row="1"
+                                   Grid.Column="1"
+                                   Text="{Binding Suit}"
+                                   FontSize="15"
+                                   Margin="2"
+                                   TextColor="LightSeaGreen"
+                                   FontAttributes="Italic"
+                                   VerticalOptions="CenterAndExpand"/>
 
-                                    <Label Text="{Binding Suit}"
-                                           FontSize="15"
-                                           Margin="2"
-                                           TextColor="LightSeaGreen"
-                                           FontAttributes="Italic" />
-
-                                </StackLayout>
-                            </StackLayout>
-                        
+                            </Grid>
+                        </ViewCell>
                     </DataTemplate>
-                </CollectionView.ItemTemplate>
-                <CollectionView.EmptyView>
-                <StackLayout>
-                    <Label VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
-                           Text="No cards yet"/>
-                </StackLayout>
-            </CollectionView.EmptyView>
-
-            </CollectionView>
+                </ListView.ItemTemplate>
+                      
+            </ListView>
             
         </Grid> 
     </ContentPage.Content>

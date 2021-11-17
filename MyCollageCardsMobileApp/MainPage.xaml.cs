@@ -27,6 +27,13 @@ namespace MyCollageCardsMobileApp
             await Navigation.PushAsync(cardListPage);
         }
 
+        async void SendFeedbackButton_Clicked(Object send, EventArgs e)
+        {
+            var feedbackPage = new FeedbackPage();
+            var localDesignPage = new LocalDesignPage();
+            var dynamicResourcePage = new DynamicResourcePage();
+            await Navigation.PushAsync(dynamicResourcePage);
+        }
 
 
     }

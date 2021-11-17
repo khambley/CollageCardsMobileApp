@@ -2,8 +2,134 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="MyCollageCardsMobileApp.AddCardPage">
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:MyCollageCardsMobileApp"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             mc:Ignorable="d"
+             x:Class="MyCollageCardsMobileApp.AddCardPage"
+             Title="Add New Card">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Clicked="Save_Clicked"/>
+        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked"/>
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
-        <Label Text="This is the AddCardPage." />
+
+      <Grid RowSpacing="20">
+          <Grid.RowDefinitions>
+              <RowDefinition Height="100" />
+              <RowDefinition Height="*" />
+              <RowDefinition Height="*" />
+              <RowDefinition Height="*" />
+              <RowDefinition Height="*" />
+              <RowDefinition Height="*" />
+          </Grid.RowDefinitions>
+
+          <Grid.ColumnDefinitions>
+              <ColumnDefinition />
+              <ColumnDefinition />
+          </Grid.ColumnDefinitions>
+
+            <!-- Row 0 -->
+            <!-- Column 0 -->
+            
+            <Image
+                x:Name="resultImage"
+                WidthRequest="100"
+                HeightRequest="100"
+                Aspect="AspectFit"
+                HorizontalOptions="Center"/>
+
+            <!-- Row 0 -->
+            <!-- Column 1 -->
+            <!-- CHOOSE IMAGE BUTTON-->
+            <Button Grid.Column="1"
+                    ios:VisualElement.IsShadowEnabled="True"
+                    ios:VisualElement.ShadowColor="Gray"
+                    ios:VisualElement.ShadowOpacity="0.7"
+                    ios:VisualElement.ShadowRadius="5"
+                    android:Button.UseDefaultShadow="True"
+                    BackgroundColor="Gray"
+                    TextColor="White"
+                    Text="Choose Image"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Padding="20, 10"
+                    HeightRequest="30"
+                    Clicked="ChooseImageButton_Clicked">
+
+                    <ios:VisualElement.ShadowOffset>
+                        <Size>
+                            <x:Arguments>
+                                <x:Double>5</x:Double>
+                                <x:Double>5</x:Double>
+                            </x:Arguments>
+                        </Size>
+                    </ios:VisualElement.ShadowOffset>
+                            
+             </Button>
+
+            <!-- Row 1 -->
+            <!--CARD NAME-->
+            <Label Grid.Row="1"
+                   Grid.ColumnSpan="2"
+                   Text="Card Name"
+                   FontSize="Small"/>
+
+            <Entry Grid.Row="1"
+                   Grid.ColumnSpan="2"
+                   Placeholder="Enter Card Name here"
+                   FontSize="Small"
+                   x:Name="cardTitle"
+                   Keyboard="Text"/>
+
+            <!-- Row 2 -->
+            <!-- CARD SUIT-->
+                <Picker Grid.Row="2"
+                        Grid.ColumnSpan="2"
+                        x:Name="suitPicker"
+                        Title="Select a Suit"
+                        TitleColor="Red">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Committee</x:String>
+                            <x:String>Community</x:String>
+                            <x:String>Companion</x:String>
+                            <x:String>Council</x:String>
+                            <x:String>Unknown</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+
+            <!-- Row 3 -->
+            <!-- CARD DESCRIPTION -->
+                <Label Text="Card Description"
+                       Grid.Row="3"
+                       Grid.ColumnSpan="2"/>
+
+                <Entry Placeholder="Enter card description here"
+                       Grid.Row="3"
+                       Grid.ColumnSpan="2"
+                       x:Name="cardDescription"
+                       Keyboard="Text" />
+
+            <!-- Row 4 -->
+            <!-- DATE CREATED -->
+                <Label Text="Date Created"
+                       Grid.Row="4"
+                       Grid.ColumnSpan="2"/>
+                <DatePicker x:Name="cardDateCreated"
+                            Grid.Row="4"
+                            Grid.ColumnSpan="2"/>
+
+
+            
+
+      </Grid>
     </ContentPage.Content>
 </ContentPage>

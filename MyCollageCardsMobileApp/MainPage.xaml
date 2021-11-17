@@ -45,6 +45,15 @@
                     Text="View Cards"
                     Clicked="ViewCardsButton_Clicked" />
 
+                <Button
+                    Padding="40,10"
+                    HorizontalOptions="FillAndExpand"
+                    TextColor="White"
+                    FontSize="Large"
+                    FontAttributes="Bold"
+                    BackgroundColor="Blue"
+                    Text="Send Feedback"
+                    Clicked="SendFeedbackButton_Clicked" />
             </StackLayout>
           
         </StackLayout>

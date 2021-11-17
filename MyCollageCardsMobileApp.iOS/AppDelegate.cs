@@ -1,4 +1,12 @@
-﻿using System;
+using Syncfusion.SfRating.XForms.iOS;
+using Syncfusion.ListView.XForms.iOS;
+using Syncfusion.XForms.iOS.ComboBox;
+using Syncfusion.XForms.iOS.TextInputLayout;
+using Syncfusion.XForms.iOS.Core;
+using Syncfusion.XForms.iOS.Graphics;
+using Syncfusion.XForms.iOS.Border;
+using Syncfusion.XForms.iOS.Buttons;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -23,7 +31,30 @@ namespace MyCollageCardsMobileApp.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            SfRatingRenderer.Init();
+            SfListViewRenderer.Init();
+            SfComboBoxRenderer.Init();
+            SfTextInputLayoutRenderer.Init();
+            SfSegmentedControlRenderer.Init();
+            SfRadioButtonRenderer.Init();
+            SfAvatarViewRenderer.Init();
+            SfBorderRenderer.Init();
+            SfButtonRenderer.Init();
+            SfGradientViewRenderer.Init();
+
             LoadApplication(new App());
+
+            //LoadApplication(UXDivers.Gorilla.iOS.Player.CreateApplication(
+            //  new UXDivers.Gorilla.Config("Good Gorilla")
+            //      // Register Grial Shared assembly
+            //      //.RegisterAssemblyFromType<UXDivers.Artina.Shared.CircleImage>()
+            //      // Register UXDivers Effects assembly
+            //      .RegisterAssembly(typeof(UXDivers.Effects.Effects).Assembly)
+            //      // FFImageLoading.Transformations
+            //      .RegisterAssemblyFromType<FFImageLoading.Transformations.BlurredTransformation>()
+            //      // FFImageLoading.Forms
+            //      .RegisterAssemblyFromType<FFImageLoading.Forms.CachedImage>()
+            //));
 
             return base.FinishedLaunching(app, options);
         }

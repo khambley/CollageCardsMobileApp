@@ -22,7 +22,8 @@ namespace MyCollageCardsMobileApp.Services
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
 			// sets up location of the SQLite db on the physical device
-			string dbPath = Path.Combine(FileSystem.AppDataDirectory, "myCollageCards.db3");
+			string documentsFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+			string dbPath = Path.Combine(documentsFolder, "myCollageCards.db3");
 
 			optionsBuilder.UseSqlite($"Filename={dbPath}");
 		}

@@ -24,8 +24,17 @@ namespace MyCollageCardsMobileApp
             {
                 await InsertStartData(dataContext);
 
+                string documentsFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
                 var theCardList = dataContext.Cards.ToList();
 
+                if(theCardList.Count > 2)
+                { 
+                    foreach (var path in theCardList.Skip(2))
+                    { 
+                        path.ImagePath = documentsFolder + path.ImagePath;
+                    }
+                }
                 cardCollectionView.ItemsSource = theCardList;
             }
         }
@@ -41,7 +50,7 @@ namespace MyCollageCardsMobileApp
                     Title = "My Collage Card 1",
                     Suit = "Test Suit 1",
                     Description = "This is a test card description",
-                    ImagePath = "https://via.placeholder.com/500x800?text=Card+Image",
+                    ImagePath = "64F5C59E-059A-485D-98CB-F6CA6512B6D0.jpeg",
                     DateCreated = DateTime.Now
                 });
                 await context.AddAsync(new Card
@@ -49,8 +58,32 @@ namespace MyCollageCardsMobileApp
                     Title = "My Collage Card 2",
                     Suit = "Test Suit 2",
                     Description = "This is a test card description",
-                    ImagePath = "https://via.placeholder.com/800x500?text=Card+Image",
+                    ImagePath = "B489B79B-A0CE-4A6F-AD75-FFCF8A675099.jpeg",
                     DateCreated = DateTime.Now
+                });
+                await context.AddAsync(new Note
+                {
+                    DateCreated = DateTime.Now,
+                    Text = "This is a new note",
+                    CardId = 1
+                });
+                await context.AddAsync(new Note
+                {
+                    DateCreated = DateTime.Now,
+                    Text = "This is another new note",
+                    CardId = 1
+                });
+                await context.AddAsync(new Note
+                {
+                    DateCreated = DateTime.Now,
+                    Text = "This is a new note",
+                    CardId = 2
+                });
+                await context.AddAsync(new Note
+                {
+                    DateCreated = DateTime.Now,
+                    Text = "This is another note",
+                    CardId = 2
                 });
                 await context.SaveChangesAsync();
             }
@@ -58,12 +91,13 @@ namespace MyCollageCardsMobileApp
 
         async void ToolbarItem_Clicked(System.Object sender, System.EventArgs e)
         {
-            await Navigation.PushAsync(new NavigationPage(new AddCardPage()));
+            var addCardPage = new AddCardPage();
+            await Navigation.PushAsync(addCardPage);
         }
 
-        async void cardCollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        async void cardCollectionView_SelectionChanged(object sender, SelectedItemChangedEventArgs e)
         {
-            if (!(e.CurrentSelection.FirstOrDefault() is Card card))
+            if (!(e.SelectedItem is Card card))
                 return;
 
             var cardDetailPage = new CardDetailPage(card.Id);

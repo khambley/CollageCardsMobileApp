@@ -170,7 +170,7 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Card.png" />
-    <BundleResource Include="Resources\64F5C59E-059A-485D-98CB-F6CA6512B6D0.jpeg" />
+    <BundleResource Include="Resources\test1.jpeg" />
     <BundleResource Include="Resources\B489B79B-A0CE-4A6F-AD75-FFCF8A675099.jpeg" />
   </ItemGroup>
   <ItemGroup>

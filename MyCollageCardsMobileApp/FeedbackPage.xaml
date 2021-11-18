@@ -1,27 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
-    BackgroundColor="{StaticResource Key=PageBgColor}"
+    
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MyCollageCardsMobileApp"
     x:Class="MyCollageCardsMobileApp.FeedbackPage"
     Title="Feedback Page">
     <ContentPage.Resources>
-        <ResourceDictionary>
-            <x:String x:Key="SubjectPlaceholder">Enter Subject</x:String>
-        <x:String x:Key="FeedbackPlaceholder">Enter your message here
-        </x:String>
-        <x:String x:Key="InputPlaceholder">Enter Subject</x:String>
-        <Color x:Key="PageBgColor">#4b94c1</Color>
-        <Color x:Key="FormBgColor">#AAAAAA</Color>
-        <Color x:Key="InputTextColor">Navy</Color>
-        <Color x:Key="InputPlaceholderColor">Silver</Color>
-        <Color x:Key="FeedbackBorderColor">Silver</Color>
-        <FontAttributes x:Key="InputFontStyle">Italic</FontAttributes>
-        <Color x:Key="BtTextColor">White</Color>
-        <Color x:Key="BtSubmitColor">Blue</Color>
-        <Color x:Key="BtCancelColor">#696969</Color>
-        <FontAttributes x:Key="BtFontStyle">Bold</FontAttributes>
-        </ResourceDictionary>
+        <ResourceDictionary MergedWith="local:MyResources" />
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid Padding="30"

@@ -121,20 +121,6 @@ namespace MyCollageCardsMobileApp
             // documents directory in app
             string documentsFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
-            //char[] charArray = { 'D', 'o', 'c', 'u', 'm', 'e', 'n', 't', 's' };
-
-            //string relativePath = documentsFolder.TrimEnd(charArray);
-
-            //string relativePath = documentsFolder.Substring(documentsFolder.LastIndexOf("Documents"));
-            //string relativePath = "";
-            //int index = documentsFolder.LastIndexOf("Documents");
-            //if(index > 0)
-            //{
-            //    //relativePath = documentsFolder.Substring(0, index);
-            //    relativePath = documentsFolder.Substring(index);
-                
-            //}
-            
 
             // images directory in documents directory in app
             string imagesFolder = Path.Combine(documentsFolder, "Images");
@@ -155,13 +141,20 @@ namespace MyCollageCardsMobileApp
                 await stream.CopyToAsync(newStream);
 
             }
-            string[] separator = { "Documents" };
-            string[] relativePaths = newFile.Split(separator, System.StringSplitOptions.RemoveEmptyEntries);
-            string newfilePath = relativePaths[1];
-            //sets file.Path for Save method to save path in db.
-            PhotoPath = newfilePath;
 
-            //PhotoPath = newFile;
+            //sets file.Path for Save method to save path in db.
+            if (Device.RuntimePlatform != Device.Android)
+            {
+                string[] separator = { "Documents" };
+                string[] relativePaths = newFile.Split(separator, System.StringSplitOptions.RemoveEmptyEntries);
+                string newfilePath = relativePaths[1];
+                PhotoPath = newfilePath;
+            }
+            else
+            {
+                PhotoPath = newFile;
+            }
+
         }
 
         async void CaptureImageButton_Clicked(System.Object sender, System.EventArgs e)

@@ -23,6 +23,7 @@ namespace MyCollageCardsMobileApp
             using (var dataContext = new DataContext())
             {
                 await InsertStartData(dataContext);
+               
 
                 string documentsFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
@@ -31,8 +32,12 @@ namespace MyCollageCardsMobileApp
                 if(theCardList.Count > 2)
                 { 
                     foreach (var path in theCardList.Skip(2))
-                    { 
-                        path.ImagePath = documentsFolder + path.ImagePath;
+                    {
+                        if(Device.RuntimePlatform != Device.Android)
+                        {
+                           path.ImagePath = documentsFolder + path.ImagePath;
+                        }
+                       
                     }
                 }
                 cardCollectionView.ItemsSource = theCardList;
@@ -50,7 +55,7 @@ namespace MyCollageCardsMobileApp
                     Title = "My Collage Card 1",
                     Suit = "Test Suit 1",
                     Description = "This is a test card description",
-                    ImagePath = "64F5C59E-059A-485D-98CB-F6CA6512B6D0.jpeg",
+                    ImagePath = "test1.jpeg",
                     DateCreated = DateTime.Now
                 });
                 await context.AddAsync(new Card
@@ -58,7 +63,7 @@ namespace MyCollageCardsMobileApp
                     Title = "My Collage Card 2",
                     Suit = "Test Suit 2",
                     Description = "This is a test card description",
-                    ImagePath = "B489B79B-A0CE-4A6F-AD75-FFCF8A675099.jpeg",
+                    ImagePath = "test2.jpeg",
                     DateCreated = DateTime.Now
                 });
                 await context.AddAsync(new Note

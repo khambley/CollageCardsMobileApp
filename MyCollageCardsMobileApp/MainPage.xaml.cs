@@ -33,7 +33,7 @@ namespace MyCollageCardsMobileApp
             var localDesignPage = new LocalDesignPage();
             var dynamicResourcePage = new DynamicResourcePage();
             var importResourcesPage = new ImportResourcesPage();
-            await Navigation.PushAsync(importResourcesPage);
+            await Navigation.PushAsync(feedbackPage);
         }
 
 

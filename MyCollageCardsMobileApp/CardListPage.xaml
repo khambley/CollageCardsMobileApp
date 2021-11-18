@@ -20,7 +20,7 @@
     <ContentPage.Content>
         <Grid RowSpacing="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="30" />
+                <RowDefinition Height="50" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
@@ -36,35 +36,43 @@
                     <DataTemplate>
                         <ViewCell>
                             <Grid Padding="0,0,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25" />
+                                <RowDefinition Height="25" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="100" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
 
-                            <Image Grid.RowSpan="2"
+                            <Image
+                                   Grid.RowSpan="4"
                                    Source="{Binding ImagePath}"
                                    HeightRequest="150"
                                    Aspect="AspectFill"
                                    HorizontalOptions="FillAndExpand"
                                    />
-
+                            <BoxView Grid.Column="1" BackgroundColor="LightBlue"></BoxView>
                             <Label Grid.Column="1"
+                                   Grid.Row="1"
                                    Text="{Binding Title}" 
                                    FontSize="16"
                                    Margin="0, 0, 0, 0"
                                    TextColor="Black"
                                    FontAttributes="Bold"
-                                   VerticalOptions="Center"/>
+                                   VerticalOptions="Start"/>
 
-                            <Label Grid.Row="1"
+                            <Label Grid.Row="2"
                                    Grid.Column="1"
                                    Text="{Binding Suit}"
                                    FontSize="15"
                                    Margin="2"
                                    TextColor="LightSeaGreen"
                                    FontAttributes="Italic"
-                                   VerticalOptions="CenterAndExpand"/>
-
+                                   />
+                            
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

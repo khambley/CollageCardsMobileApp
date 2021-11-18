@@ -5,6 +5,7 @@
     x:Class="MyCollageCardsMobileApp.CardDetailPage">
     <ContentPage.Content>
         <StackLayout HorizontalOptions="StartAndExpand">
+
             <Label Text="This is the card detail page."
                    HorizontalTextAlignment="Center" />
         </StackLayout>

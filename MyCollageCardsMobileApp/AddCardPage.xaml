@@ -47,11 +47,6 @@
             <!-- Column 1 -->
             <!-- CHOOSE IMAGE BUTTON-->
             <Button Grid.Column="1"
-                    ios:VisualElement.IsShadowEnabled="True"
-                    ios:VisualElement.ShadowColor="Gray"
-                    ios:VisualElement.ShadowOpacity="0.7"
-                    ios:VisualElement.ShadowRadius="5"
-                    android:Button.UseDefaultShadow="True"
                     BackgroundColor="Gray"
                     TextColor="White"
                     Text="Choose Image"
@@ -59,18 +54,8 @@
                     FontSize="Medium"
                     HorizontalOptions="Center"
                     VerticalOptions="Center"
-                    Padding="20, 10"
-                    HeightRequest="30"
+                    Padding="20,5,20,5"
                     Clicked="ChooseImageButton_Clicked">
-
-                    <ios:VisualElement.ShadowOffset>
-                        <Size>
-                            <x:Arguments>
-                                <x:Double>5</x:Double>
-                                <x:Double>5</x:Double>
-                            </x:Arguments>
-                        </Size>
-                    </ios:VisualElement.ShadowOffset>
                             
              </Button>
 
